@@ -1,0 +1,20 @@
+rails new user_login_project
+rails g model User first_name:string last_name:string email_address:string age:integer
+rake db:migrate
+user = User.new(:first_name => "John", :last_name => "Walz", :email_address => "johnwalz97@gmail.com", :age => 18)
+user.save
+User.all
+Hirb.enable
+User.all
+user = User.new(:first_name => "John", :last_name => "Walz", :email_address => "johnwalz97@gmail.com", :age => 18)
+user.save
+user = User.new(:first_name => "John", :last_name => "Walz", :email_address => "johnwalz97@gmail.com", :age => 18)
+user.save
+User.find(4)
+User.find(1).update(:last_name => "Nothing")
+User.first
+User.last
+User.delete(4)
+user = User.new(:first_name => "J", :email_address => "johnwalz97gmail.com", :age => 180)
+user.save
+user.errors.full_messages

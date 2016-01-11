@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+<hr>
+
+<form action="/comments" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="authenticity_token" type="hidden" value="mKmAPOy93nw/ZhXfcjXn6VQRwPPdD7xJJv+3/rOKtik=">
+  <input type="hidden" name="comment[product_id]" value="<%= @product.id %>">
+  <label>Comment:</label><br>
+  <textarea style="width: 600px; height: 100px" name="comment[comment]"></textarea><br>
+  <input type="submit" value="Comment">
+</form>
+
+<% @product.comments.each do |comment| %>
+<p>
+  <%= comment.comment %> <span>-<%= comment.created_at %></span>
+</p>
+<% end %>

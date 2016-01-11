@@ -1,0 +1,36 @@
+<h1>Hi <%=current_user.first_name + " " + current_user.last_name%></h1>
+<div class="col-lg-8">
+  <h4>Here are all the organizations you may join:</h4>
+  <% @groups.each do |group| %>
+    <div class="container">
+      <h3><%= link_to group.name, group %></h3>
+      <p>Members: <%= group.users.length %></p>
+      <p><%= group.description %></p>
+      <% if current_user.id == group.user.id %>
+        <p><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="col-lg-4" style="margin-top: 100px; border: solid thick black">
+  <h1>New Group</h1>
+  <form accept-charset="UTF-8" action="/groups" class="new_group" id="new_group" method="post">
+    <div style="display:none">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    </div>
+    <div class="field">
+      <label for="group_name">Name</label><br>
+      <input id="group_name" name="group[name]" type="text">
+    </div>
+    <div class="field">
+      <label for="group_description">Description</label><br>
+      <input id="group_description" name="group[description]" type="text">
+    </div>
+    <input id="group_user_id" name="group[user_id]" value="<%=current_user.id%>" type="hidden">
+    <div class="actions">
+      <input name="commit" type="submit" value="Create Group">
+    </div>
+  </form>
+</div>
+<br>

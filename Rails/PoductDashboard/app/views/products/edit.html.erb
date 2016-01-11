@@ -1,0 +1,35 @@
+<h1>Editing product</h1>
+
+<form accept-charset="UTF-8" action="/products/3" class="edit_product" id="edit_product_3" method="post">
+    <div style="display:none">
+        <input name="utf8" type="hidden" value="✓">
+        <input name="_method" type="hidden" value="patch">
+        <input name="authenticity_token" type="hidden" value="mKmAPOy93nw/ZhXfcjXn6VQRwPPdD7xJJv+3/rOKtik=">
+    </div>
+    <div class="field">
+        <label for="product_name">Name</label><br>
+        <input id="product_name" name="product[name]" type="text" value="Garden Hose">
+    </div>
+    <div class="field">
+        <label for="product_description">Description</label><br>
+        <input id="product_description" name="product[description]" type="text" value="Best garden hose ever!">
+    </div>
+    <div class="field">
+        <label for="product_price">Price</label><br>
+        <input id="product_price" name="product[price]" type="text" value="19.99">
+    </div>
+    <div class="field">
+        <label for="product_category_id">Category</label><br>
+        <select id="product_category_id" name="product[category_id]">
+            <% @categories.each do |category| %>
+                <option value=<%= category.id %>><%= category.name %></option>
+            <% end %>
+        </select>
+    </div>
+    <div class="actions">
+        <input name="commit" type="submit" value="Update Product">
+    </div>
+</form>
+
+<%= link_to 'Show', @product %> |
+<%= link_to 'Back', products_path %>

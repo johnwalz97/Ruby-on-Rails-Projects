@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<h1>All comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.comment %></td>
+        <td><%= comment.product.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
